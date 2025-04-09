@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBTI Survey - Phase 2</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to the MBTI Survey - Phase 2</h1>
+    </header>
+
+    <main>
+        <!-- Genre Selection -->
+        <section id="genre-selection">
+            <h2>Select up to 3 Anime Genres</h2>
+            <form id="genre-form">
+                <label><input type="checkbox" name="genre" value="Action"> Action</label>
+                <label><input type="checkbox" name="genre" value="Adventure"> Adventure</label>
+                <label><input type="checkbox" name="genre" value="Comedy"> Comedy</label>
+                <label><input type="checkbox" name="genre" value="Drama"> Drama</label>
+                <label><input type="checkbox" name="genre" value="Fantasy"> Fantasy</label>
+                <label><input type="checkbox" name="genre" value="Horror"> Horror</label>
+                <label><input type="checkbox" name="genre" value="Romance"> Romance</label>
+                <label><input type="checkbox" name="genre" value="SciFi"> SciFi</label>
+                <button type="button" id="start-survey">Start Survey</button>
+            </form>
+        </section>
+
+        <!-- Survey Questions -->
+        <section id="survey-questions" style="display: none;">
+            <h2>Answer the Questions</h2>
+            <form id="questions-form">
+                <div id="questions-container">
+                    <!-- Questions will be dynamically inserted here -->
+                </div>
+                <button type="submit">Submit Answers</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

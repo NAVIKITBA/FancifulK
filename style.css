@@ -1,0 +1,71 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+header {
+    background-color: #6200ea;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+main {
+    padding: 2rem;
+}
+
+h1, h2 {
+    color: #6200ea;
+}
+
+/* Genre Selection Styles */
+#genre-selection {
+    margin-bottom: 2rem;
+}
+
+#genre-form label {
+    display: block;
+    margin: 0.5rem 0;
+}
+
+#genre-form button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #6200ea;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#genre-form button:hover {
+    background-color: #3700b3;
+}
+
+/* Survey Questions Styles */
+#survey-questions {
+    margin-top: 2rem;
+}
+
+#questions-container label {
+    display: block;
+    margin: 0.5rem 0;
+}
+
+#questions-form button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #6200ea;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#questions-form button:hover {
+    background-color: #3700b3;
+}
