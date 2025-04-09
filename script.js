@@ -44,14 +44,31 @@ startSurveyButton.addEventListener('click', () => {
 // Load questions dynamically
 function loadQuestions(genres) {
     const questions = {
-        Action: ['Action Q1', 'Action Q2', 'Action Q3', 'Action Q4'],
-        Adventure: ['Adventure Q1', 'Adventure Q2', 'Adventure Q3', 'Adventure Q4'],
-        Comedy: ['Comedy Q1', 'Comedy Q2', 'Comedy Q3', 'Comedy Q4'],
-        Drama: ['Drama Q1', 'Drama Q2', 'Drama Q3', 'Drama Q4'],
-        Fantasy: ['Fantasy Q1', 'Fantasy Q2', 'Fantasy Q3', 'Fantasy Q4'],
-        Horror: ['Horror Q1', 'Horror Q2', 'Horror Q3', 'Horror Q4'],
-        Romance: ['Romance Q1', 'Romance Q2', 'Romance Q3', 'Romance Q4'],
-        SciFi: ['SciFi Q1', 'SciFi Q2', 'SciFi Q3', 'SciFi Q4']
+        Action: [
+            'In a high-stakes battle, would you rather lead your team with bold commands (E) or analyze the situation quietly before making a move (I)?',
+            'When faced with an overwhelming enemy force, do you prefer charging into the fray (E) or finding a secluded spot to plan your next step (I)?',
+            'If given the choice, would you rather fight alongside allies to boost morale (E) or take a moment alone to recharge before rejoining the fight (I)?',
+            'During a heated confrontation, do you find yourself more energized by the chaos around you (E) or prefer to retreat to gather your thoughts (I)?'
+        ],
+        Adventure: [
+            'In the midst of combat, do you rely more on observing the immediate surroundings (S) or trusting a gut feeling about what might happen next (N)?',
+            'When planning an attack, do you focus on the tangible details of the environment (S) or consider possible future scenarios that could unfold (N)?',
+            'Do you prefer using weapons and techniques that you have mastered over time (S) or experimenting with new untested methods during the fight (N)?',
+            'Is it more important to stay grounded in the present reality of the battle (S) or to envision creative solutions that may seem unconventional at first (N)?'
+        ],
+        Comedy: [
+            'When deciding whether to strike an opponent, do you base your decision on logic and strategy (T) or consider how it will affect those around you emotionally (F)?',
+            'If a teammate makes a mistake in battle, do you focus on correcting their error immediately (T) or offer encouragement to help them regain confidence (F)?',
+            'Would you rather prioritize defeating the enemy efficiently (T) or ensure that no innocent lives are harmed even if it complicates the mission (F)?',
+            'In a tough situation, do you weigh the consequences objectively (T) or let your heart guide you toward what feels morally right (F)?'
+        ],
+        Drama: [
+            'Before entering a dangerous mission, do you prefer having a clear plan mapped out (J) or remaining flexible to adapt as things unfold (P)?',
+            'Would you rather stick to a well-thought-out strategy (J) or embrace spontaneity and improvise when unexpected challenges arise (P)?',
+            'Do you feel more comfortable knowing exactly what your role is in a team (J) or enjoy exploring different options and changing tactics mid-battle (P)?',
+            'Is it better to prepare meticulously for every possibility (J) or trust that you can handle whatever comes your way without overplanning (P)?'
+        ]
+        // Add more genres and their respective questions here if needed
     };
 
     questionsContainer.innerHTML = '';
