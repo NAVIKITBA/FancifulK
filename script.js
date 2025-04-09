@@ -38,11 +38,24 @@ startSurveyButton.addEventListener('click', function () {
     document.getElementById('genre-selection').style.display = 'none';
     surveyQuestionsSection.style.display = 'block';
 
-    // Show only the selected genre forms
+    // Show only the selected genre forms and add titles dynamically
     const allForms = document.querySelectorAll('#survey-questions form');
     allForms.forEach(form => {
         if (selectedGenres.includes(form.id.replace('-Genre', ''))) {
             form.style.display = 'block';
+
+            // Add genre title dynamically
+            const genreTitle = document.createElement('h3');
+            genreTitle.textContent = form.id.replace('-', ' ');
+            form.prepend(genreTitle);
+
+            // Add a submit button dynamically if not already present
+            if (!form.querySelector('button[type="submit"]')) {
+                const submitButton = document.createElement('button');
+                submitButton.type = 'submit';
+                submitButton.textContent = `Submit ${form.id.replace('-', ' ')} Answers`;
+                form.appendChild(submitButton);
+            }
         } else {
             form.style.display = 'none';
         }
@@ -152,44 +165,44 @@ function addAnswer(dichotomy, answer) {
 }
 
 // Function to calculate MBTI type
-function calculateMBTI() {
-    const resultDiv = document.getElementById('result');
-    let mbtiType = '';
+function calculateMBTI(answers) {
+    const mbtiResults = {
+        Action: calculateGenreMBTI(answers.Action),
+        Adventure: calculateGenreMBTI(answers.Adventure),
+        Comedy: calculateGenreMBTI(answers.Comedy),
+        Drama: calculateGenreMBTI(answers.Drama),
+        Fantasy: calculateGenreMBTI(answers.Fantasy),
+        Horror: calculateGenreMBTI(answers.Horror),
+        Romance: calculateGenreMBTI(answers.Romance),
+        SciFi: calculateGenreMBTI(answers.SciFi)
+    };
+    return mbtiResults;
+}
 
-    // Determine E/I
-    const eiCount = { E: 0, I: 0 };
-    answers.EI.forEach(a => eiCount[a]++);
-    mbtiType += eiCount.E >= eiCount.I ? 'E' : 'I';
-
-    // Determine S/N
-    const snCount = { S: 0, N: 0 };
-    answers.SN.forEach(a => snCount[a]++);
-    mbtiType += snCount.S >= snCount.N ? 'S' : 'N';
-
-    // Determine T/F
-    const tfCount = { T: 0, F: 0 };
-    answers.TF.forEach(a => tfCount[a]++);
-    mbtiType += tfCount.T >= tfCount.F ? 'T' : 'F';
-
-    // Determine J/P
-    const jpCount = { J: 0, P: 0 };
-    answers.JP.forEach(a => jpCount[a]++);
-    mbtiType += jpCount.J >= jpCount.P ? 'J' : 'P';
-
-    resultDiv.innerHTML = `Your MBTI Type is: ${mbtiType}`;
-
-    // Save answers to Google Sheets
-    saveAnswersToGoogleSheets(mbtiType);
+function calculateGenreMBTI(genreAnswers) {
+    // Logic to calculate MBTI type for a specific genre
+    return genreAnswers ? 'ExampleType' : ''; // Replace with actual logic
 }
 
 // Function to save answers to Google Sheets
 async function saveAnswersToGoogleSheets(mbtiType) {
+    const userData = getUrlParams(); // Retrieve user data from URL parameters
+    const selectedGenres = Array.from(document.querySelectorAll('input[name="genre"]:checked')).map(input => input.value).join(',');
+
     const data = {
-        MBTI_Type: mbtiType,
-        EI_Answers: answers.EI.join(','),
-        SN_Answers: answers.SN.join(','),
-        TF_Answers: answers.TF.join(','),
-        JP_Answers: answers.JP.join(',')
+        Name: userData.name || 'Anonymous',
+        Age: userData.age || 'N/A',
+        Gender: userData.gender || 'N/A',
+        Email: userData.email || 'N/A',
+        Genre: selectedGenres,
+        MBTI_Action: mbtiType.Action || '',
+        MBTI_Adventure: mbtiType.Adventure || '',
+        MBTI_Comedy: mbtiType.Comedy || '',
+        MBTI_Drama: mbtiType.Drama || '',
+        MBTI_Fantasy: mbtiType.Fantasy || '',
+        MBTI_Horror: mbtiType.Horror || '',
+        MBTI_Romance: mbtiType.Romance || '',
+        MBTI_SciFi: mbtiType.SciFi || ''
     };
 
     try {
@@ -198,7 +211,7 @@ async function saveAnswersToGoogleSheets(mbtiType) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         });
-        alert('Your MBTI results have been saved!');
+        alert('Your MBTI results and selected genres have been saved!');
     } catch (error) {
         alert('Failed to save your MBTI results. Please try again.');
     }
