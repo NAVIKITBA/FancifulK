@@ -3,15 +3,16 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f9;
-    color: #333;
+    background-color: #121212; /* Dark mode background */
+    color: #ffffff; /* Light text for contrast */
 }
 
 header {
-    background-color: #6200ea;
-    color: white;
+    background-color: #1f1f1f; /* Darker header */
+    color: #ffffff;
     padding: 1rem;
     text-align: center;
+    border-bottom: 2px solid #6200ea; /* Accent color */
 }
 
 main {
@@ -19,27 +20,39 @@ main {
 }
 
 h1, h2 {
-    color: #6200ea;
+    color: #bb86fc; /* Accent color for headings */
 }
 
 /* Genre Selection Styles */
 #genre-selection {
     margin-bottom: 2rem;
+    background-color: #1f1f1f; /* Card-like background */
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 #genre-form label {
     display: block;
     margin: 0.5rem 0;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+#genre-form input[type="checkbox"] {
+    margin-right: 0.5rem;
 }
 
 #genre-form button {
     margin-top: 1rem;
-    padding: 0.5rem 1rem;
+    padding: 0.7rem 1.5rem;
     background-color: #6200ea;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
 }
 
 #genre-form button:hover {
@@ -49,23 +62,42 @@ h1, h2 {
 /* Survey Questions Styles */
 #survey-questions {
     margin-top: 2rem;
+    background-color: #1f1f1f; /* Card-like background */
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 #questions-container label {
     display: block;
     margin: 0.5rem 0;
+    font-size: 1.1rem;
 }
 
-#questions-form button {
-    margin-top: 1rem;
+#questions-container button {
+    margin: 0.5rem;
     padding: 0.5rem 1rem;
-    background-color: #6200ea;
-    color: white;
+    background-color: #03dac6; /* Secondary accent color */
+    color: #121212;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
 }
 
-#questions-form button:hover {
-    background-color: #3700b3;
+#questions-container button:hover {
+    background-color: #018786;
+}
+
+/* Result Section */
+#result {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #1f1f1f;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    font-size: 1.2rem;
+    color: #bb86fc;
+    text-align: center;
 }
