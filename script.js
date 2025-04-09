@@ -26,19 +26,24 @@ const startSurveyButton = document.getElementById('start-survey');
 const surveyQuestionsSection = document.getElementById('survey-questions');
 const questionsContainer = document.getElementById('questions-container');
 
-startSurveyButton.addEventListener('click', () => {
-    const selectedGenres = Array.from(genreForm.elements['genre'])
-        .filter(input => input.checked)
-        .map(input => input.value);
-
-    if (selectedGenres.length === 0 || selectedGenres.length > 3) {
-        alert('Please select up to 3 genres.');
+document.getElementById('start-survey').addEventListener('click', function () {
+    const selectedGenres = Array.from(document.querySelectorAll('input[name="genre"]:checked')).map(input => input.value);
+    if (selectedGenres.length > 3) {
+        alert('Please select up to 3 genres only.');
         return;
     }
+    document.getElementById('genre-selection').style.display = 'none';
+    document.getElementById('survey-questions').style.display = 'block';
 
-    loadQuestions(selectedGenres);
-    genreForm.style.display = 'none';
-    surveyQuestionsSection.style.display = 'block';
+    const allForms = ['Action-Genre', 'Adventure-Genre', 'Comedy-Genre', 'Drama-Genre', 'Fantasy-Genre', 'Horror-Genre', 'Romance-Genre', 'SciFi-Genre'];
+    allForms.forEach(formId => {
+        const formElement = document.getElementById(formId);
+        if (selectedGenres.includes(formId.split('-')[0])) {
+            formElement.style.display = 'block'; // Show selected genres
+        } else {
+            formElement.style.display = 'none'; // Hide unselected genres
+        }
+    });
 });
 
 // Load questions dynamically
@@ -80,14 +85,23 @@ function loadQuestions(genres) {
         questions[genre].forEach((question, index) => {
             const questionLabel = document.createElement('label');
             questionLabel.textContent = question;
-
-            const questionInput = document.createElement('input');
-            questionInput.type = 'text';
-            questionInput.name = `${genre}_Q${index + 1}`;
-
             questionsContainer.appendChild(questionLabel);
-            questionsContainer.appendChild(questionInput);
-            questionsContainer.appendChild(document.createElement('br'));
+
+            const buttonContainer = document.createElement('div');
+
+            const buttonE = document.createElement('button');
+            buttonE.textContent = 'E';
+            buttonE.type = 'button';
+            buttonE.onclick = () => addAnswer(genre, 'E');
+
+            const buttonI = document.createElement('button');
+            buttonI.textContent = 'I';
+            buttonI.type = 'button';
+            buttonI.onclick = () => addAnswer(genre, 'I');
+
+            buttonContainer.appendChild(buttonE);
+            buttonContainer.appendChild(buttonI);
+            questionsContainer.appendChild(buttonContainer);
         });
     });
 }
@@ -99,11 +113,23 @@ document.getElementById('questions-form').addEventListener('submit', async (even
     const formData = new FormData(event.target);
     const answers = Object.fromEntries(formData.entries());
 
+    // Prepare data for Google Sheets
+    const data = {
+        MBTI_Action: answers['Action'] || '',
+        MBTI_Adventure: answers['Adventure'] || '',
+        MBTI_Comedy: answers['Comedy'] || '',
+        MBTI_Drama: answers['Drama'] || '',
+        MBTI_Fantasy: answers['Fantasy'] || '',
+        MBTI_Horror: answers['Horror'] || '',
+        MBTI_Romance: answers['Romance'] || '',
+        MBTI_SciFi: answers['SciFi'] || ''
+    };
+
     try {
         await fetch('https://sheetdb.io/api/v1/gevpdtunqva70', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(answers)
+            body: JSON.stringify(data)
         });
         alert('Your answers have been saved!');
     } catch (error) {
