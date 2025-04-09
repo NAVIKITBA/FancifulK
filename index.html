@@ -33,7 +33,93 @@
             <h2>Answer the Questions</h2>
             <form id="questions-form">
                 <div id="questions-container">
-                    <!-- Questions will be dynamically inserted here -->
+                    <!-- Extraversion (E) vs Introversion (I) -->
+                    <h2>Extraversion (E) vs Introversion (I)</h2>
+                    <label>1. In a high-stakes battle, would you rather lead your team with bold commands (E) or analyze the situation quietly before making a move (I)?</label><br>
+                    <button type="button" onclick="addAnswer('EI', 'E')">E</button>
+                    <button type="button" onclick="addAnswer('EI', 'I')">I</button><br><br>
+
+                    <label>2. When faced with an overwhelming enemy force, do you prefer charging into the fray (E) or finding a secluded spot to plan your next step (I)?</label><br>
+                    <button type="button" onclick="addAnswer('EI', 'E')">E</button>
+                    <button type="button" onclick="addAnswer('EI', 'I')">I</button><br><br>
+
+                    <label>3. If given the choice, would you rather fight alongside allies to boost morale (E) or take a moment alone to recharge before rejoining the fight (I)?</label><br>
+                    <button type="button" onclick="addAnswer('EI', 'E')">E</button>
+                    <button type="button" onclick="addAnswer('EI', 'I')">I</button><br><br>
+
+                    <label>4. During a heated confrontation, do you find yourself more energized by the chaos around you (E) or prefer to retreat to gather your thoughts (I)?</label><br>
+                    <button type="button" onclick="addAnswer('EI', 'E')">E</button>
+                    <button type="button" onclick="addAnswer('EI', 'I')">I</button><br><br>
+
+                    <label>5. Would you rather inspire others through your actions in the moment (E) or reflect on your strategy in solitude before acting (I)?</label><br>
+                    <button type="button" onclick="addAnswer('EI', 'E')">E</button>
+                    <button type="button" onclick="addAnswer('EI', 'I')">I</button><br><br>
+
+                    <!-- Sensing (S) vs Intuition (N) -->
+                    <h2>Sensing (S) vs Intuition (N)</h2>
+                    <label>6. In the midst of combat, do you rely more on observing the immediate surroundings (S) or trusting a gut feeling about what might happen next (N)?</label><br>
+                    <button type="button" onclick="addAnswer('SN', 'S')">S</button>
+                    <button type="button" onclick="addAnswer('SN', 'N')">N</button><br><br>
+
+                    <label>7. When planning an attack, do you focus on the tangible details of the environment (S) or consider possible future scenarios that could unfold (N)?</label><br>
+                    <button type="button" onclick="addAnswer('SN', 'S')">S</button>
+                    <button type="button" onclick="addAnswer('SN', 'N')">N</button><br><br>
+
+                    <label>8. Do you prefer using weapons and techniques that you have mastered over time (S) or experimenting with new untested methods during the fight (N)?</label><br>
+                    <button type="button" onclick="addAnswer('SN', 'S')">S</button>
+                    <button type="button" onclick="addAnswer('SN', 'N')">N</button><br><br>
+
+                    <label>9. Is it more important to stay grounded in the present reality of the battle (S) or to envision creative solutions that may seem unconventional at first (N)?</label><br>
+                    <button type="button" onclick="addAnswer('SN', 'S')">S</button>
+                    <button type="button" onclick="addAnswer('SN', 'N')">N</button><br><br>
+
+                    <label>10. Would you rather follow a proven strategy based on past experiences (S) or take a risk on an innovative approach inspired by intuition (N)?</label><br>
+                    <button type="button" onclick="addAnswer('SN', 'S')">S</button>
+                    <button type="button" onclick="addAnswer('SN', 'N')">N</button><br><br>
+
+                    <!-- Thinking (T) vs Feeling (F) -->
+                    <h2>Thinking (T) vs Feeling (F)</h2>
+                    <label>11. When deciding whether to strike an opponent, do you base your decision on logic and strategy (T) or consider how it will affect those around you emotionally (F)?</label><br>
+                    <button type="button" onclick="addAnswer('TF', 'T')">T</button>
+                    <button type="button" onclick="addAnswer('TF', 'F')">F</button><br><br>
+
+                    <label>12. If a teammate makes a mistake in battle, do you focus on correcting their error immediately (T) or offer encouragement to help them regain confidence (F)?</label><br>
+                    <button type="button" onclick="addAnswer('TF', 'T')">T</button>
+                    <button type="button" onclick="addAnswer('TF', 'F')">F</button><br><br>
+
+                    <label>13. Would you rather prioritize defeating the enemy efficiently (T) or ensure that no innocent lives are harmed even if it complicates the mission (F)?</label><br>
+                    <button type="button" onclick="addAnswer('TF', 'T')">T</button>
+                    <button type="button" onclick="addAnswer('TF', 'F')">F</button><br><br>
+
+                    <label>14. In a tough situation, do you weigh the consequences objectively (T) or let your heart guide you toward what feels morally right (F)?</label><br>
+                    <button type="button" onclick="addAnswer('TF', 'T')">T</button>
+                    <button type="button" onclick="addAnswer('TF', 'F')">F</button><br><br>
+
+                    <label>15. When two friends clash in battle, do you side with the one whose reasoning aligns with logic (T) or support the one who seems more emotionally justified (F)?</label><br>
+                    <button type="button" onclick="addAnswer('TF', 'T')">T</button>
+                    <button type="button" onclick="addAnswer('TF', 'F')">F</button><br><br>
+
+                    <!-- Judging (J) vs Perceiving (P) -->
+                    <h2>Judging (J) vs Perceiving (P)</h2>
+                    <label>16. Before entering a dangerous mission, do you prefer having a clear plan mapped out (J) or remaining flexible to adapt as things unfold (P)?</label><br>
+                    <button type="button" onclick="addAnswer('JP', 'J')">J</button>
+                    <button type="button" onclick="addAnswer('JP', 'P')">P</button><br><br>
+
+                    <label>17. Would you rather stick to a well-thought-out strategy (J) or embrace spontaneity and improvise when unexpected challenges arise (P)?</label><br>
+                    <button type="button" onclick="addAnswer('JP', 'J')">J</button>
+                    <button type="button" onclick="addAnswer('JP', 'P')">P</button><br><br>
+
+                    <label>18. Do you feel more comfortable knowing exactly what your role is in a team (J) or enjoy exploring different options and changing tactics mid-battle (P)?</label><br>
+                    <button type="button" onclick="addAnswer('JP', 'J')">J</button>
+                    <button type="button" onclick="addAnswer('JP', 'P')">P</button><br><br>
+
+                    <label>19. Is it better to prepare meticulously for every possibility (J) or trust that you can handle whatever comes your way without overplanning (P)?</label><br>
+                    <button type="button" onclick="addAnswer('JP', 'J')">J</button>
+                    <button type="button" onclick="addAnswer('JP', 'P')">P</button><br><br>
+
+                    <label>20. When victory seems uncertain, do you double down on your initial plan (J) or pivot to try something entirely new even if it's risky (P)?</label><br>
+                    <button type="button" onclick="addAnswer('JP', 'J')">J</button>
+                    <button type="button" onclick="addAnswer('JP', 'P')">P</button><br><br>
                 </div>
                 <button type="submit">Submit Answers</button>
             </form>
