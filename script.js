@@ -102,3 +102,69 @@ function calculatePersonality(answers) {
     // Replace with actual logic based on answers
     alert('Your personality type has been calculated! (Logic to be implemented)');
 }
+
+// Store answers for MBTI calculation
+let answers = {
+    EI: [],
+    SN: [],
+    TF: [],
+    JP: []
+};
+
+// Function to add answers to the respective dichotomy
+function addAnswer(dichotomy, answer) {
+    answers[dichotomy].push(answer);
+}
+
+// Function to calculate MBTI type
+function calculateMBTI() {
+    const resultDiv = document.getElementById('result');
+    let mbtiType = '';
+
+    // Determine E/I
+    const eiCount = { E: 0, I: 0 };
+    answers.EI.forEach(a => eiCount[a]++);
+    mbtiType += eiCount.E >= eiCount.I ? 'E' : 'I';
+
+    // Determine S/N
+    const snCount = { S: 0, N: 0 };
+    answers.SN.forEach(a => snCount[a]++);
+    mbtiType += snCount.S >= snCount.N ? 'S' : 'N';
+
+    // Determine T/F
+    const tfCount = { T: 0, F: 0 };
+    answers.TF.forEach(a => tfCount[a]++);
+    mbtiType += tfCount.T >= tfCount.F ? 'T' : 'F';
+
+    // Determine J/P
+    const jpCount = { J: 0, P: 0 };
+    answers.JP.forEach(a => jpCount[a]++);
+    mbtiType += jpCount.J >= jpCount.P ? 'J' : 'P';
+
+    resultDiv.innerHTML = `Your MBTI Type is: ${mbtiType}`;
+
+    // Save answers to Google Sheets
+    saveAnswersToGoogleSheets(mbtiType);
+}
+
+// Function to save answers to Google Sheets
+async function saveAnswersToGoogleSheets(mbtiType) {
+    const data = {
+        MBTI_Type: mbtiType,
+        EI_Answers: answers.EI.join(','),
+        SN_Answers: answers.SN.join(','),
+        TF_Answers: answers.TF.join(','),
+        JP_Answers: answers.JP.join(',')
+    };
+
+    try {
+        await fetch('https://sheetdb.io/api/v1/gevpdtunqva70', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        alert('Your MBTI results have been saved!');
+    } catch (error) {
+        alert('Failed to save your MBTI results. Please try again.');
+    }
+}
