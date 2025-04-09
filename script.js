@@ -1,7 +1,23 @@
-// Greet the user with a popup
+// Function to get URL parameters
+function getUrlParams() {
+    const params = new URLSearchParams(window.location.search);
+    return {
+        name: params.get('name'),
+        age: params.get('age'),
+        gender: params.get('gender'),
+        email: params.get('email')
+    };
+}
+
+// Greet the user with a popup using data from the first phase
 window.onload = function() {
-    const savedName = localStorage.getItem('Name') || 'User'; // Replace with actual data retrieval logic
-    alert(`Hey, ${savedName}! Let's begin the survey.`);
+    const userData = getUrlParams();
+    if (userData.name) {
+        localStorage.setItem('Name', userData.name); // Save the name for later use
+        alert(`Hey, ${userData.name}! Let's begin the survey.`);
+    } else {
+        alert('Welcome! Please ensure your data is passed from the first phase.');
+    }
 };
 
 // Handle genre selection
